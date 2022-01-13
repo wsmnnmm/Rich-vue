@@ -1,5 +1,8 @@
 <template>
-  <div>404</div>
+  <div>
+    <div>404当前网页不存在，请检查网址是否正确</div>
+    <router-link to="/">返回首页</router-link>
+  </div>
 </template>
 
 <script lang="ts">
