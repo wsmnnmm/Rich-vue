@@ -1,7 +1,8 @@
 <template>
-  <div>
-    标签
-    <hr>
+  <div class="nav-rapper">
+    <div class="content">
+      标签
+    </div>
     <Nav/>
   </div>
 
@@ -15,5 +16,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nav-rapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
+.content {
+  flex-grow: 1;
+  overflow: auto;
+}
 </style>
