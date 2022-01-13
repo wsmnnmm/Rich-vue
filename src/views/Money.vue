@@ -1,5 +1,9 @@
 <template>
-  <div> Money</div>
+  <div>
+    记账
+    <hr>
+    <Nav/>
+  </div>
 </template>
 
 <script lang="ts">

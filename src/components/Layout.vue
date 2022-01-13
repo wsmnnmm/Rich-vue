@@ -1,17 +1,11 @@
 <template>
-  <div>
-    标签
-    <hr>
-    <Nav/>
-  </div>
-
+<div></div>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'Labels',
+  name: 'Layout'
 };
-
 </script>
 
 <style lang="scss" scoped>
