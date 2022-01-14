@@ -1,11 +1,9 @@
 <template>
-  <div class="nav-rapper">
-    <div class="content">
-      标签
-    </div>
-    <Nav/>
-  </div>
-
+ <div>
+   <Layout>
+     <p>标签</p>
+   </Layout>
+ </div>
 </template>
 
 <script lang="ts">
@@ -16,14 +14,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav-rapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
-.content {
-  flex-grow: 1;
-  overflow: auto;
-}
 </style>
