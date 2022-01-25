@@ -4,7 +4,7 @@ const localStorageKeyName = 'recordList';
 
 const recordStore = {
   recordList: [] as RecordItem[],
-  fetchRecords() {
+  fetchRecords: function () {
     this.recordList = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]') as RecordItem[];
     return this.recordList;
   },
