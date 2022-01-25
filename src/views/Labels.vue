@@ -16,22 +16,22 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import Button from '@/components/Button.vue';
+import TagHelper from '@/mixins/TagHelper';
+import {mixins} from 'vue-class-component';
 
 @Component({
-  components: {Button}
-})
-export default class Labels extends Vue {
-  // TODO
-  tags = []; //store.tagList;
-  createTag() {
-    const name = window.prompt('请输入便签名');
-    if (name) {
-      //TODO
-      //store.createTag(name)
+  components: {Button},
+  computed: {
+    tags() {
+      return this.$store.state.tagList;
     }
+  }
+})
+export default class Labels extends mixins(TagHelper) {
+  beforeCreate() {
+    this.$store.commit('fetchTags');
   }
 }
 
