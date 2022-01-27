@@ -19,8 +19,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-import FormItem from '@/components/Money/FromItem.vue';
 import Button from '@/components/Button.vue';
+import FormItem from '@/components/Money/FormItem.vue';
 
 @Component({
   components: {Button, FormItem}

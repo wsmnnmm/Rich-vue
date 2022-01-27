@@ -5,7 +5,7 @@
       <input type="text"
              :value="value"
              @input="onValueChanged($event.target.value)"
-             :placeholder="placeholder">
+             :placeholder="this.placeholder">
     </label>
   </div>
 </template>
@@ -15,9 +15,9 @@ import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 
 @Component
-
 export default class FormItem extends Vue {
-  @Prop({default: ''}) value!: string;
+  @Prop({default: ''}) readonly value!: string;
+
   @Prop({required: true}) fieldName!: string;
   @Prop() placeholder?: string;
 
@@ -30,8 +30,8 @@ export default class FormItem extends Vue {
 <style lang="scss" scoped>
 .formItem {
   font-size: 14px;
-  display: flex;
   padding-left: 16px;
+  display: flex;
   align-items: center;
 
   .name {
@@ -39,8 +39,8 @@ export default class FormItem extends Vue {
   }
 
   input {
-    flex-grow: 1;
     height: 40px;
+    flex-grow: 1;
     background: transparent;
     border: none;
     padding-right: 16px;
