@@ -4,15 +4,10 @@ import clone from '@/lib/clone';
 import createId from '@/lib/createId';
 import router from '@/router';
 
-Vue.use(Vuex); //把 store 绑到 Vue.prototype.$store = store
+Vue.use(Vuex);
 
-type RootState = {
-  recordList: RecordItem[],
-  tagList: Tag[],
-  currentTag?: Tag
-}
 const store = new Vuex.Store({
-  state: { //data
+  state: {
     recordList: [],
     tagList: [],
     currentTag: undefined
@@ -20,9 +15,6 @@ const store = new Vuex.Store({
   mutations: {
     setCurrentTag(state, id: string) {
       state.currentTag = state.tagList.filter(t => t.id === id)[0];
-    },
-    fetchRecords(state) {
-      state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]');
     },
     updateTag(state, payload: { id: string, name: string }) {
       const {id, name} = payload;
@@ -53,15 +45,20 @@ const store = new Vuex.Store({
       } else {
         window.alert('删除失败');
       }
+
+    },
+    fetchRecords(state) {
+      state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },
     createRecord(state, record) {
       const record2: RecordItem = clone(record);
-      record2.createdAt = new Date();
+      record2.createdAt = new Date().toISOString();
       state.recordList.push(record2);
       store.commit('saveRecords');
     },
     saveRecords(state) {
-      window.localStorage.setItem('recordList', JSON.stringify(state.recordList));
+      window.localStorage.setItem('recordList',
+        JSON.stringify(state.recordList));
     },
     fetchTags(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
@@ -78,7 +75,7 @@ const store = new Vuex.Store({
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
-    }
+    },
   }
 });
 
