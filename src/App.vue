@@ -53,4 +53,28 @@ body {
   transform: translateX(212.5px);
   margin-left: 5px;
 }
+
+@media screen and (max-width: 640px) {
+  .btn {
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+}
+
+@media screen and(max-width: 450px) {
+  .btn, .qrcode {
+    display: none;
+  }
+}
+
+@media screen and(min-height: 800px) {
+  #app {
+    width: 425px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 </style>
