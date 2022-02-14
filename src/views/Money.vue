@@ -1,15 +1,12 @@
 <template>
   <Layout class-prefix="layout">
+    <Tags :value.sync="record.tags"/>
+    <FormItem
+        field-name="备注"
+        placeholder="请输入备注"
+        :value="record.notes" @update:value="onUpdateNotes($event)"/>
+    <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
-    <Tabs :data-source="recordTypeList"
-          :value.sync="record.type"/>
-    <div class="notes">
-      <FormItem field-name="备注"
-                placeholder="在这里输入备注"
-                @update:value="onUpdateNotes"
-      />
-    </div>
-    <Tags/>
   </Layout>
 </template>
 
@@ -33,7 +30,10 @@ export default class Money extends Vue {
   recordTypeList = recordTypeList;
 
   record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 0
+    tags: [],
+    notes: '',
+    type: '-',
+    amount: 0,
   };
 
   created() {
@@ -45,20 +45,25 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
+    if (!this.record.tags || this.record.tags.length === 0) {
+      return window.alert('请至少选择一个标签');
+    }
     this.$store.commit('createRecord', this.record);
+    this.record.notes = '';
+    this.record.amount = 0;
+    console.log(this.record);
+    window.alert('已保存');
   }
 }
 </script>
 
-<style lang="scss" scoped>
-
-::v-deep .layout-content {
+<style lang="scss">
+.layout-content {
+  background-color: #fff;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
-
-
-.notes {
-  padding: 12px 0;
-}
+</style>
+<style lang="scss" scoped>
+@import "~@/assets/style/helper";
 </style>
