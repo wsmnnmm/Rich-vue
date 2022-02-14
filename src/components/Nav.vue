@@ -1,16 +1,19 @@
 <template>
   <nav>
     <router-link to="/Money" class="item" active-class="selected">
-      <Icon name="money"/>
-      记账
+      <!--      <Icon name="money"/>-->
+      <i class="iconfont icon-fukuan"></i>
+      <span>记账</span>
     </router-link>
     <router-link to="/Labels" class="item" active-class="selected">
-      <Icon name="labels"/>
-      标签
+      <!--      <Icon name="labels"/>-->
+      <i class="iconfont icon-faxian"></i>
+      <span>标签</span>
     </router-link>
     <router-link to="/Statistics" class="item" active-class="selected">
-      <Icon name="statistics"/>
-      统计
+      <!--      <Icon name="statistics"/>-->
+      <i class="iconfont icon-gaishuai"></i>
+      <span>统计</span>
     </router-link>
   </nav>
 </template>
@@ -22,26 +25,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
+
 nav {
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
   display: flex;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
-  flex-direction: row;
+  justify-content: space-around;
 
   > .item {
     padding: 2px 0;
     width: 33.333%;
     display: flex;
+    color: #666;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    .icon {
-      width: 32px;
-      height: 32px;
+    i {
+      display: block;
+      font-size: 2rem;
+      color: inherit;
+    }
+
+    //.icon {
+    //  width: 32px;
+    //  height: 32px;
+    //}
+
+    span {
+      font-weight: 600;
     }
   }
+
   > .item.selected {
-    color: green;
+    color: $themeColor;
   }
 }
 </style>

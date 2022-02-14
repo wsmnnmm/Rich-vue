@@ -1,9 +1,13 @@
 <template>
   <div class="tags">
     <ul class="current">
-      <li v-for="tag in tagList" :key="tag.id"
-          :class="{selected:selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{ tag.name }}
+      <li
+          v-for="tag in tagList"
+          :key="tag.id"
+          :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
+          @click="toggle(tag)"
+      >
+        {{ tag.name }}
       </li>
     </ul>
     <div class="new">
@@ -38,11 +42,12 @@ export default class Tags extends mixins(TagHelper) {
     }
     this.$emit('update:value', this.selectedTags);
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper";
+
 .tags {
   background: white;
   display: flex;
@@ -57,21 +62,22 @@ export default class Tags extends mixins(TagHelper) {
     display: flex;
     flex-wrap: wrap;
 
-
     > li {
-      $bg: #d9d9d9;
+      $bg: #dbfcf4;
       background: $bg;
       $h: 24px;
       height: $h;
       line-height: $h;
+      color: $themeColor;
       padding: 0 16px;
       border-radius: $h/2;
       margin-right: 12px;
       margin-top: 10px;
 
       &.selected {
-        background: darken($bg, 30%);
         color: white;
+        background: darken($bg, 30%);
+        background-color: $themeColor;
       }
     }
   }
@@ -82,7 +88,7 @@ export default class Tags extends mixins(TagHelper) {
     button {
       background: transparent;
       border: none;
-      color: #999;
+      color: $themeColor;
       border-bottom: 1px solid;
       padding: 0 4px;
     }
