@@ -70,7 +70,7 @@ body {
 
 @media screen and(min-height: 800px) {
   #app {
-    width: 425px;
+    width: 100vh;
     position: absolute;
     left: 50%;
     top: 50%;
